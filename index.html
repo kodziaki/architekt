@@ -54,9 +54,11 @@ categories:
       - Cloud
 </textarea>
 
+<br/>
 <!-- Button to trigger the conversion -->
-<button onclick="convertYAML()">Convert YAML to Select</button>
+<button onclick="convertYAML()">Convert</button>
 
+<br/>
 <!-- Container for the generated select lists -->
 <div id="selectContainer"></div>
 
@@ -88,7 +90,7 @@ function convertYAML() {
 
             // Add an empty option as a placeholder
             //const emptyOption = new Option('-- Select an option --', '');
-            const emptyOption = new Option(' --- ', '');
+            const emptyOption = new Option(' - - - - - - ', '');
             select.appendChild(emptyOption);
 
             // Iterate over the items within the category to create options
