@@ -12,8 +12,8 @@
 <h1>YAML to HTML Select Converter</h1>
 <textarea id="yaml" rows="10" cols="50">
 categories:
-  - name: Input
-    items-types:
+  - name: Input Type
+    items:
       - Keyboard
         - text
         - key
@@ -22,14 +22,21 @@ categories:
         - video
         - audio
       - Microphone
-        - audio
+        in:
+          - air wave
+        out:
+          - audio
+
       - Memory
       
       
-  - name: Output
+  - name: Output Type
     items:
-      - Speaker
-        - audio      
+      - Sepaker
+        in:
+          - audio
+        out:
+          - air wave  
       - LCD Screen
         - text
         - audio
@@ -44,6 +51,24 @@ categories:
         - stream
       - Cloud
         - 
+
+  - name: Service Type
+    items:
+      - Text To Speech
+        in:
+          - audio
+        out:
+          - text
+
+  
+  - name: Data-Operation
+    items:
+      - Speaker
+        - mute
+        - volume up
+        - volume down
+      -
+    
 </textarea>
   
 <!-- Textarea for YAML input -->
