@@ -87,7 +87,7 @@ function convertYAML() {
             const select = document.createElement('select');
 
             // Add an empty option as a placeholder
-            const emptyOption = new Option('-- Select an option --', '');
+            //const emptyOption = new Option('-- Select an option --', '');
             const emptyOption = new Option(' --- ', '');
             select.appendChild(emptyOption);
 
@@ -101,9 +101,8 @@ function convertYAML() {
             // Append the select element to the container
             container.appendChild(select);
 
-            // Add a line break for better layout
-            container.appendChild(document.createElement('br'));
-            container.appendChild(document.createElement('br'));
+            // Add a line break for better layout            
+            //container.appendChild(document.createElement('br'));
         });
     }
 }
