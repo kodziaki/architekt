@@ -59,6 +59,7 @@ categories:
 <button onclick="convertYAML()">Convert</button>
 
 <br/>
+<br/>
 <!-- Container for the generated select lists -->
 <div id="selectContainer"></div>
 
@@ -82,7 +83,7 @@ function convertYAML() {
         parsedYaml.categories.forEach(category => {
             // Create a label for the category
             const label = document.createElement('label');
-            label.textContent = category.name;
+            label.textContent = category.name + ": ";
             container.appendChild(label);
 
             // Create a select element
