@@ -1,2 +1,0 @@
-# architekt
-architekt.kodziaki
