@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAML to HTML Select Converter</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+
+<h1>YAML to HTML Select Converter</h1>
+
+<!-- Textarea for YAML input -->
+<textarea id="yamlInput" rows="10" cols="50">
+categories:
+  - name: Fruits
+    items:
+      - Apple
+      - Banana
+  - name: Vegetables
+    items:
+      - Tomato
+      - Lettuce
+</textarea>
+
+<!-- Button to trigger the conversion -->
+<button onclick="convertYAML()">Convert YAML to Select</button>
+
+<!-- Container for the generated select lists -->
+<div id="selectContainer"></div>
+
+<script>
+function convertYAML() {
+    // Get the YAML input from the textarea
+    const yamlInput = document.getElementById('yamlInput').value;
+
+    // Parse the YAML content
+    const parsedYaml = jsyaml.load(yamlInput);
+
+    // Get the container for the select lists
+    const container = document.getElementById('selectContainer');
+
+    // Clear previous select lists if any
+    container.innerHTML = '';
+
+    // Check if the parsed YAML structure is as expected
+    if (parsedYaml && parsedYaml.categories) {
+        // Iterate over the categories to create separate select lists
+        parsedYaml.categories.forEach(category => {
+            // Create a label for the category
+            const label = document.createElement('label');
+            label.textContent = category.name;
+            container.appendChild(label);
+
+            // Create a select element
+            const select = document.createElement('select');
+
+            // Add an empty option as a placeholder
+            const emptyOption = new Option('-- Select an option --', '');
+            select.appendChild(emptyOption);
+
+            // Iterate over the items within the category to create options
+            category.items.forEach(item => {
+                const option = new Option(item, item); // value and text are the same in this example
+                option.dataset.hint = `Hint for ${item}`; // Add a data attribute for the hint
+                select.appendChild(option);
+            });
+
+            // Append the select element to the container
+            container.appendChild(select);
+
+            // Add a line break for better layout
+            container.appendChild(document.createElement('br'));
+        });
+    }
+}
+
+// Optional: Function to show hints when an option is selected
+document.getElementById('selectContainer').addEventListener('change', function(e) {
+    if (e.target.tagName === 'SELECT') {
+        const hint = e.target.options[e.target.selectedIndex].dataset.hint;
+        alert(hint); // For this example, we'll just show an alert; you could display the hint elsewhere on the page
+    }
+});
+</script>
+
+</body>
+</html>
